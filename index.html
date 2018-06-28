@@ -14,19 +14,27 @@
     
 </head>
 <body>
-    <header>
+    <header class="text-center">
         <h1>The Giphy App</h1>
     </header>
     <div class="container">
-        <div id="button-added"></div>
-        <div id="add-animal">
-            <form>
-                <div class="form-group">
-                    <label for="AddGiphy">Add an animal</label>
-                    <input type="text" class="form-control" id="giphyInput" aria-describedby="giphyInput" placeholder="Add an animal" value="">
-                    <button id="addGiphy" type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+        <div id="button-added" class="text-center"></div>
+        <div id="add-animal" class="container row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <form>
+                    <h2 class="text-center">Search for an animal</h2>
+                    <div class="form-row">
+                        <div class="col-10">
+                            <input type="text" class="form-control" id="giphyInput" aria-describedby="giphyInput" placeholder="Add an animal" value="">
+                        </div>
+                        <div class="col-2">
+                            <button id="addGiphy" type="submit" class="btn btn-primary">Submit</button>
+                        </div>    
+                    </div>
+                </form>
+            </div>
+            <div class="col-2"></div>
         </div>
         <div id="results" class="row"></div>
     </div>
@@ -35,6 +43,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Giphy JS -->
-    <script src="assets/js/giphy.01.js"></script>
+    <script src="assets/js/giphy.03.js"></script>
 </body>
 </html>

@@ -3,3 +3,13 @@
 img {
     width: 100%;
 }
+
+.animal {
+    margin-left: 10px;
+}
+
+form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
