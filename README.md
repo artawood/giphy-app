@@ -1,4 +1,4 @@
-**#The Giphy App#**
+**The Giphy App**
 ===========================
 
 Creating my first API app!
