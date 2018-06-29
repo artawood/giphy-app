@@ -4,11 +4,11 @@
 
     //capture animal name from data-attribute and display gifs
     function savedSearch() {
-        // In this case, the "this" keyword refers to the button that was clicked
+        
         var searchedAnimal = $(this).attr("data-name");
 
         console.log(searchedAnimal);
-        // Constructing a URL to search Giphy for the name of the person who said the quote
+        // Constructing a URL to search Giphy
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchedAnimal + "&api_key=LQZSsWQiwn6cINtqyMiTrU1Pu6Ecbu96&limit=10";
   
         // Performing our AJAX GET request
