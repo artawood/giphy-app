@@ -1,4 +1,6 @@
-#The Giphy App
+**#The Giphy App#**
+===========================
+
 Creating my first API app!
 
 Updated 06/28/18 version 0.3
