@@ -1,7 +1,5 @@
 //Giphy App
 
-
-
     var animals = ["dog", "cat", "mouse"];
 
     //capture animal name from data-attribute and display gifs
@@ -42,6 +40,7 @@
                 resultImage.attr("data-animate", animateURL);
                 resultImage.attr("data-state", "still");
                 resultImage.addClass("gif");
+                resultImage.attr("id", "result");
                 resultImage.attr("alt", searchedAnimal);
 
                 //Append results 
@@ -56,7 +55,7 @@
         $("#button-added").empty();
         animals.forEach(animal => {
             var a = $("<button>");
-            a.addClass("animal btn btn-secondary");
+            a.addClass("animal btn btn-dark");
             a.attr("data-name", animal);
             a.text(animal);
             $("#button-added").append(a);
@@ -67,48 +66,55 @@
     $("#addGiphy").on("click", (event) => {
         event.preventDefault();
         var search = $("#giphyInput").val().trim();
-        animals.push(search);
-        console.log(animals);
+        if ( search == '' ) {
+            //Validate if input is empty, otherwise it will return endless AJAX
+            alert("Please type in an animal!");
+        } else {
+            animals.push(search);
+            console.log(animals);
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=LQZSsWQiwn6cINtqyMiTrU1Pu6Ecbu96&limit=10";
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=LQZSsWQiwn6cINtqyMiTrU1Pu6Ecbu96&limit=10";
 
-        $.ajax ({
-            url: queryURL,
-            method: "GET"
-        }).then ((response) => {
+            $.ajax ({
+                url: queryURL,
+                method: "GET"
+            }).then ((response) => {
 
-            //Run loop through the data set retrived via AJAX
-            response.data.forEach(data => {
+                //Run loop through the data set retrived via AJAX
+                response.data.forEach(data => {
 
-                //Render each gif
-                var rating = data.rating;
+                    //Render each gif
+                    var rating = data.rating;
 
-                var displayRating = $("<h3>").text("Rating: " + rating);
-                var newDiv = $("<div>")
-                newDiv.attr("value", rating);
-                newDiv.attr("class", "col-lg-4");
+                    var displayRating = $("<h3>").text("Rating: " + rating);
+                    var newDiv = $("<div>")
+                    newDiv.attr("value", rating);
+                    newDiv.attr("class", "col-lg-4");
 
-                var animateURL = data.images.original.url;
-                var stillURL = data.images.downsized_still.url;
+                    var animateURL = data.images.original.url;
+                    var stillURL = data.images.downsized_still.url;
 
-                var resultImage = $("<img>");
+                    var resultImage = $("<img>");
 
-                resultImage.attr("src", stillURL);
-                resultImage.attr("data-still", stillURL);
-                resultImage.attr("data-animate", animateURL);
-                resultImage.attr("data-state", "still");
-                resultImage.addClass("gif");
-                resultImage.attr("alt", search);
+                    resultImage.attr("src", stillURL);
+                    resultImage.attr("data-still", stillURL);
+                    resultImage.attr("data-animate", animateURL);
+                    resultImage.attr("data-state", "still");
+                    resultImage.addClass("gif");
+                    resultImage.attr("alt", search);
 
-                //Append results 
-                $("#results").append(newDiv);
-                newDiv.append( displayRating, resultImage );
+                    //Append results 
+                    $("#results").append(newDiv);
+                    newDiv.append( displayRating, resultImage );
 
+                });
             });
-        });
 
-        //Render Buttons after added search
-        renderButtons();
+            //Render Buttons after added search
+            renderButtons();
+            $("#giphyInput").val('');
+
+        }
     });
 
     //Function for displaying saved search
@@ -118,7 +124,8 @@
     renderButtons();
 
     //Toggle between still and animate state of gif
-    $(".gif").on("click", function() {
+    function playGif() {
+        console.log(this);
         var state = $(this).attr("data-state");
         console.log(state);
         if (state === "still") {
@@ -128,6 +135,8 @@
           $(this).attr("src", $(this).attr("data-still"));
           $(this).attr("data-state", "still");
         }
-    });
+    };
+
+    $(document).on("click", ".gif", playGif);
 
 
