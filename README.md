@@ -1,5 +1,5 @@
-# Giphy App
-The Giftastic Homework
+#The Giphy App
+Creating my first API app!
 
 Updated 06/28/18 version 0.3
 - Made it prettier and responsive
