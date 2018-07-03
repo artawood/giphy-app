@@ -3,6 +3,10 @@
 
 Creating my first API app!
 
+Updated 07/03/18 (not part of homework)
+- Testing the gif layout with Masonry: https://masonry.desandro.com/
+
+
 Updated 06/28/18 version 0.3
 - Made it prettier and responsive
 - Added pause/play element for gif
